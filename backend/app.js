@@ -4,14 +4,14 @@ var path = require('path');
 
 const dbHelpers = require('./helpers/dbHelpers')(db);
 
-
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+
 
 app.use(logger('dev'));
 app.use(express.json());

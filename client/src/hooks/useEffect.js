@@ -13,11 +13,8 @@ const useApplicationData = () => {
     loading: true,
   });
   useEffect(() => {
-    // axios({
-    //   method: 'GET',
-    //   url: '/api/users',
-    // })
-    axios.get("http://localhost:3001/api/users")
+  
+    axios.get('http://localhost:3001/api/users')
       .then(({
         data
       }) => {
