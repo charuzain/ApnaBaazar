@@ -5,7 +5,7 @@ CREATE TABLE products(
     price INTEGER NOT NULL,
     image VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
-    weight INTEGER NOT NULL,
+    weight VARCHAR(255) NOT NULL,
     quantity INTEGER NOT NULL,
     category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE
 );
