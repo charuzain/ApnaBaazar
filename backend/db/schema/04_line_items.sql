@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS line_items CASCADE;
+CREATE TABLE line_items(
+    id SERIAL PRIMARY KEY NOT NULL,
+    quantity INTEGER NOT NULL,
+    product_id INTEGER REFERENCES products(id) ON DELETE CASCADE,
+    order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE
+);
