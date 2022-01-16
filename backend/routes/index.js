@@ -1,6 +1,6 @@
-var express = require("express");
-var router = express.Router();
-var cors = require("cors");
+const express = require("express");
+const router = express.Router();
+const cors = require("cors");
 router.use(cors());
 /* GET home page. */
 router.get("/", function (req, res, next) {
