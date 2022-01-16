@@ -1,21 +1,13 @@
-const { password } = require("pg/lib/defaults");
-const dbHelpers = require("./dbHelpers");
-
-modules.export = (db) => {
+module.exports = (db) => {
   const getuserByEmail = (email) => {
     const query = {
-      text: `SELECT  email, password FROM users
-            WHERE email = $1`,
+      text: `SELECT  email, password FROM users WHERE email = $1`,
       values: [email]
     }
     return db
     .query(query)
-    .then((result) => {
-      result.rows[0];
-    })
-    .catch((err) => {
-      err
-    })
+    .then((result) =>result.rows[0])
+     .catch((err) => err)
   }
 
 
@@ -58,5 +50,5 @@ modules.export = (db) => {
   //   .catch((err) => err);
   // }
 
-  return {ifEmailExist};
+  return { getuserByEmail};
 }
