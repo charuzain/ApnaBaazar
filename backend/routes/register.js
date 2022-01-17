@@ -1,17 +1,12 @@
 /* eslint-disable camelcase */
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { getUserByEmail } = require("../helpers/dbLoginHelpers");
+module.exports = ({ addUser, getUserByEmail}) => {
+  router.post("/", (req, res) => {
 
-module.exports = ({ addUser }) => {
-  // check user has entered all the value
-  // call the getuser function to chek if email already exist in database
-  // if yes , tell the user email already exist and redirect to login page
-  // if no insert the value in the database , and register as new message
-
-  router.post("/", (res, req) => {
     const { first_name, last_name, email, password, phone, shipping_address } =
       req.body;
+      console.log(req.body)
     const user = {
       first_name,
       last_name,
@@ -20,7 +15,7 @@ module.exports = ({ addUser }) => {
       phone,
       shipping_address,
     };
-
+    console.log(user)
     if (
       user.first_name === "" ||
       user.last_name === "" ||
@@ -33,25 +28,18 @@ module.exports = ({ addUser }) => {
     }
 
     getUserByEmail(user.email)
-      .then((user) => {
-        if (user) {
+      .then((response) => {
+        if (response) {
           res.json({
             msg: "Account with this email address already exists",
           });
         } else {
-          return addUser(
-            first_name,
-            last_name,
-            email,
-            password,
-            phone,
-            shipping_address
-          );
+          return addUser(user);
         }
       })
       .then((newUser) => res.json(newUser))
       .catch((err) => res.json({ error: err.message }));
-
-    return router;
+   
   });
+  return router;
 };
