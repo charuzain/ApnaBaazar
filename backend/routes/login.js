@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-module.exports = ({ getuserByEmail }) => {
+module.exports = ({ getUserByEmail }) => {
   router.post("/", (req, res) => {
     const { email, password } = req.body;
     const errors = {
@@ -16,12 +16,13 @@ module.exports = ({ getuserByEmail }) => {
       return;
     }
 
-    getuserByEmail(email)
+    getUserByEmail(email)
       .then((user) => {
         if (!user) {
           return res.json("User with this email doesnot exist");
         }
         if (user.password === password) {
+          req.session.user_id = user.id;
           res.json("Login Successful");
         } else {
           res.json("Unsucessful Login");
