@@ -1,24 +1,22 @@
 import logo from "./logo.svg";
 import "./App.css";
-import useApplicationData from "./hooks/useEffect";
+import {useState} from 'react';
+import Header from './components/Header';
+import Login from  './components/Login';
+import Register from './components/Register';
+
 
 const App = () => {
-  const { state, dispatch } = useApplicationData();
-  console.log(state.users);
-  const userList = state.users.map((user) => (
-    <li key={user.id}>
-      {" "}
-      {user.first_name} {user.last_name} {user.email}{" "}
-    </li>
-  ));
-  console.log(userList);
-  return (
-    <div className="App">
-      <h1> Users </h1>
+  const [message, setMessage] = useState('Hello!!');
 
-      <ul> {userList} </ul>
+  return (
+    <div >
+      <Header message="Welcome" />
+
     </div>
+   
   );
-};
+
+  };
 
 export default App;
