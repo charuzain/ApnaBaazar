@@ -1,5 +1,5 @@
 .main_container {
-  height: 2000px;
+  height: 1000px;
 }
 
 /* .mynav{
@@ -22,6 +22,7 @@
   height: 50rem;
   color: white;
   position: relative;
+  
 }
 
 .carousel-item .container{
@@ -32,10 +33,22 @@
   padding-bottom: 50px;
 }
 
+.carousel-item .overlay-image{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-position: center;
+  background-size: cover;
+  /* opacity: 0.5; */
+
+}
+
 .body {
-  background-color: cornflowerblue;
+  background-color: lightblue;
   height: 30rem;
-  color: blue;
+  color: whute;
   position: relative;
 }
 
@@ -43,6 +56,25 @@
   position: absolute;
   left: 0;
   right: 0;
+  padding-top: 50px;
   padding-left: 30px;
+  text-align: center;
+}
+
+.body .body_container h4{
+  text-align: justify;
+  padding-top: 10px;
+}
+
+.product{
+  background-color: orange;
+  height: 40rem;
+  padding-left: 30px;
+  padding-top: 20px;
+}
+
+.footer {
+  background-color: greenyellow;
+  height: 3;
 }
 
