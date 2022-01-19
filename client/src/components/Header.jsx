@@ -7,6 +7,7 @@ const Header = (props) => {
       <>
         <div className="mynav">
           <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+            {/* <!-- Left links --> */}
 
             <div className="container-fluid">
               <a className="navbar-brand mb-0 h1"
@@ -47,13 +48,16 @@ const Header = (props) => {
                     </ul>
                   </li>
                 </ul>
-
+              {/* <!-- Left links --> */}
+              
+              {/* <!-- Center links --> */}
                 <form className="d-flex" >
                   <input className="form-control me-2 d-flex justify-content-center" type="search" placeholder="Search" aria-label="Search" />
                   <button className="btn btn-success" type="submit">Search</button>
                 </form>
+              {/* <!-- Center links --> */}
 
-
+              {/* <!-- Right links --> */}
                 <ul className="nav-item">
                   <a className="nav-link active" aria-current="page" href="/login">SignIn</a>
                 </ul>
@@ -66,6 +70,7 @@ const Header = (props) => {
                     <i class="fas fa-shopping-cart"></i>
                   </a>
                 </ul>
+              {/* <!-- Right links --> */}
 
               </div>
             </div>
