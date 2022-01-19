@@ -7,5 +7,6 @@ CREATE TABLE products(
     description TEXT NOT NULL,
     weight VARCHAR(255) NOT NULL,
     quantity INTEGER NOT NULL,
+    featured BOOLEAN NOT NULL,
     category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE
 );
