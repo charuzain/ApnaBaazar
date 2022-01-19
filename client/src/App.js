@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <div >
-      <Header message="Welcome" />
+      <Header message="Our mission is to bring the best ingredients from around the world, right to your doorstep. With a wide variety of authentic regional ingredients, we strive to reconnect people with the familiar flavor of India." />
 
     </div>
    

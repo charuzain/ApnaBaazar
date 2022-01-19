@@ -1,0 +1,48 @@
+.main_container {
+  height: 2000px;
+}
+
+/* .mynav{
+  background-image: url('../images/gro_img2.jpeg');
+  height: 32rem;
+} */
+
+/* .navbar {
+  background-color: transparent !important;
+} */
+
+.navbar .navbar-brand{
+  color: black;
+  font-weight: bolder;
+  font-size: 1.5em;
+}
+
+.carousel-item{
+  background-color: gray;  
+  height: 50rem;
+  color: white;
+  position: relative;
+}
+
+.carousel-item .container{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 50px;
+}
+
+.body {
+  background-color: cornflowerblue;
+  height: 30rem;
+  color: blue;
+  position: relative;
+}
+
+.body .body_container{
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding-left: 30px;
+}
+
