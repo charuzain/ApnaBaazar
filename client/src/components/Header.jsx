@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/header.css"
+
 
 
 const Header = () => {
@@ -61,11 +61,11 @@ const Header = () => {
               <a className="nav-link active" aria-current="page" href="/login">SignIn</a>
             </ul>
             <ul className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/register" >Sign Up</a>
+              <a className="nav-link active" aria-current="page" href="/Signup" >SignUp</a>
             </ul>
             <ul className="nav-item">
               {/* <!-- Icon --> */}
-              <a class="text-reset me-3" href="#">
+              <a class="text-reset me-3" href="/checkout">
                 <i class="fas fa-shopping-cart"></i>
               </a>
             </ul>
