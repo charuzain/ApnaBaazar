@@ -1,20 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom'
-import './index.css';
-import App from './App';
-// import reportWebVitals from './reportWebVitals';
-import {ProductsProvider} from './context/products_context'
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import {BrowserRouter} from 'react-router-dom'
+// import './index.css';
+// import App from './App';
+// // import reportWebVitals from './reportWebVitals';
+// import {ProductsProvider} from './context/products_context'
 
-ReactDOM.render(
-<ProductsProvider>
-  <BrowserRouter>
-    <App />
-    </BrowserRouter>
-    </ProductsProvider >,
+// ReactDOM.render(
+// <ProductsProvider>
+//   <BrowserRouter>
+//     <App />
+//     </BrowserRouter>
+//     </ProductsProvider >,
   
-  document.getElementById('root')
-);
+//   document.getElementById('root')
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
