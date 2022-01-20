@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 module.exports = ({getAllProducts, getSingleProduct})=>{
-router.get('/',(req,res)=>{
+
+  router.get('/',(req,res)=>{
   getAllProducts()
   .then((products)=>res.json(products))
     .catch((err) => res.json({
