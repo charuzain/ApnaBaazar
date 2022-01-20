@@ -1,11 +1,11 @@
 import React from 'react'
 import { useProductsContext } from '../context/products_context'
+import { Link } from 'react-router-dom'
 import Error from './Error'
 import Loading from './Loading'
 import Product from './Product'
 import styled from 'styled-components'
 import '../index.css'
-
 
 export default function FeaturedProducts() {
   const { products_loading, products_error, featured_products} = useProductsContext()
@@ -13,7 +13,7 @@ export default function FeaturedProducts() {
     <div>
       {products_loading && <Loading/>}
       {products_error && <Error/>}
-      <Wrapper className='section'>
+      <Wrapper className="section">
       <div className="title">
       <h2>Weekly Specials</h2>
       <div className="underline"></div>
