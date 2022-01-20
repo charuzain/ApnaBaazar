@@ -1,6 +1,7 @@
-import logo from "./logo.svg";
 import "./App.css";
 import useApplicationData from "./hooks/useEffect";
+import Checkout from "./components/Checkout";
+import Signup from "./components/Signup";
 
 const App = () => {
   const { state, dispatch } = useApplicationData();
@@ -14,8 +15,9 @@ const App = () => {
   console.log(userList);
   return (
     <div className="App">
-      <h1> Users </h1>
-
+      <div>
+        <Signup></Signup>
+      </div>
       <ul> {userList} </ul>
     </div>
   );
