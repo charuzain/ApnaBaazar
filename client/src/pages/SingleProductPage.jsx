@@ -56,7 +56,7 @@ export default function SingleProductPage() {
               {quantity>0 ? "In stock" : "Out of Stock"}
             </p>
             <hr />
-            {quantity > 0 && <AddToCart/>}
+            {quantity > 0 && <AddToCart product={product}/>}
           </section>
         </div>
       
