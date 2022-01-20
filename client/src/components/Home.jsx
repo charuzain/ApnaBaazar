@@ -1,13 +1,14 @@
 import React from 'react';
 import Header from './Header';
-import Footer from './Footer'
+import Footer from './Footer';
+import "../styles/home.css"
 
 const Home = () => {
   return (
     <div className='body-container'>
       <Header />
 
-      <div>
+      <div className='carousel'>
       <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>

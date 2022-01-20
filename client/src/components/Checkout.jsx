@@ -1,5 +1,7 @@
 import React, {useReducer , useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from './Footer';
+import Header from './Header';
 
 export default function Checkout() {
 
@@ -8,7 +10,10 @@ export default function Checkout() {
     alert('You have submitted the form.')
   }
   return (
+    <div>
+    <Header />
     <checkout>
+      
       <div class="container">
         <main>
         <form onSubmit={handleSubmit}>
@@ -132,6 +137,10 @@ export default function Checkout() {
                 </form>
               </main>
             </div>
+            
           </checkout>
+          
+          <Footer />
+          </ div>
           );
 }

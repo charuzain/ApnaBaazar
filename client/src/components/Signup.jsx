@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Footer from './Footer';
+import Header from './Header';
 
 export default function Signup() {
   const [values, setValues] = useState({
@@ -25,6 +27,8 @@ export default function Signup() {
    
   }
   return (
+    <div>
+      <Header />
       <div class="row">
         <div class="col-md-6 offset-md-3">
             <div class="signup-form">
@@ -59,6 +63,8 @@ export default function Signup() {
                 </form>
             </div>
         </div>
+    </div>
+    <Footer />
     </div>
   )
 };
