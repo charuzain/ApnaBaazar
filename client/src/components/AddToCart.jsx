@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const AddToCart = () => {
+  const {id, quantitiy} = product
   return <h4>addToCart </h4>
 }
 
