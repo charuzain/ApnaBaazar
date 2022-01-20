@@ -22,7 +22,7 @@ const App = () => {
   return (
   <Routes>
       {/* <Fresh fresh={fresh}/> */}
-      <Route path='/products' element={<FeaturedProducts />}></Route>
+      <Route path='/' element={<FeaturedProducts />}></Route>
       <Route path='products/:id' element={<SingleProductPage />}></Route>
 
     </Routes>
