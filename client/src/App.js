@@ -1,23 +1,31 @@
-import logo from "./logo.svg";
 import "./App.css";
-import useApplicationData from "./hooks/useEffect";
+import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import FeaturedProducts from "./components/FeaturedProducts";
+import './index.css';
+import SingleProductPage from "./pages/SingleProductPage";
+// import axios from "axios";
+
+// import { Fresh } from "./components/Fresh";
 
 const App = () => {
-  const { state, dispatch } = useApplicationData();
-  console.log(state.users);
-  const userList = state.users.map((user) => (
-    <li key={user.id}>
-      {" "}
-      {user.first_name} {user.last_name} {user.email}{" "}
-    </li>
-  ));
-  console.log(userList);
-  return (
-    <div className="App">
-      <h1> Users </h1>
+  // const [fresh, setFresh] = useState([])
 
-      <ul> {userList} </ul>
-    </div>
+  // useEffect(() => {
+  //   axios.get("http://localhost:3001/api/products").then((res) => {
+  //     setFresh(res.data);
+  //     console.log(res.data)
+
+  //   });
+  // }, []);
+
+  return (
+  <Routes>
+      {/* <Fresh fresh={fresh}/> */}
+      <Route path='/products' element={<FeaturedProducts />}></Route>
+      <Route path='products/:id' element={<SingleProductPage />}></Route>
+
+    </Routes>
   );
 };
 
