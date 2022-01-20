@@ -1,24 +1,28 @@
-import logo from "./logo.svg";
 import "./App.css";
-import useApplicationData from "./hooks/useEffect";
+import {Routes, Route } from "react-router-dom";
+import Home from './components/Home'
+import Login from  './components/Login';
+import Register from './components/Register';
+
 
 const App = () => {
-  const { state, dispatch } = useApplicationData();
-  console.log(state.users);
-  const userList = state.users.map((user) => (
-    <li key={user.id}>
-      {" "}
-      {user.first_name} {user.last_name} {user.email}{" "}
-    </li>
-  ));
-  console.log(userList);
+
   return (
     <div className="App">
-      <h1> Users </h1>
 
-      <ul> {userList} </ul>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} /> 
+          <Route path="/register" element={<Register />} />
+       
+      </Routes>
+
+      
+
     </div>
+   
   );
+
 };
 
 export default App;
