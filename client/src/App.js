@@ -1,8 +1,8 @@
-import "./App.css";
+// import "./App.css";
 import {Routes, Route } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import FeaturedProducts from "./components/FeaturedProducts";
-import './index.css';
+import "./index.css";
 import SingleProductPage from "./pages/SingleProductPage";
 // import axios from "axios";
 
