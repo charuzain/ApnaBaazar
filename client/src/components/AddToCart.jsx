@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const AddToCart = () => {
-  return <h4>addToCart </h4>
+const AddToCart = ({product}) => {
+  const {id, quantitiy} = product
+  return 
+  <Wrapper>
+  <h4>addToCart </h4>
+  </Wrapper>
 }
 
 const Wrapper = styled.section`
