@@ -1,8 +1,47 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import AmountButtons from './AmountButtons'
+// import { inc } from 'semver'
 
-const AddToCart = () => {
-  return <h4>addToCart </h4>
+const AddToCart = (props ) => {
+  console.log(props)
+  const { id, quantity } = props.product
+  console.log(quantity)
+  const [amount , setAmount] = useState(1)
+
+  // when user increase the quantity , increase by 1 
+  // if quantity of item is greater than item in stock , set new amount to be 
+  // equal to quanity in stock
+  const increase = ()=>{
+    setAmount((prevAmount)=>{
+      let newAmount = prevAmount + 1
+      if(newAmount>quantity){
+        newAmount = quantity
+      }
+      return newAmount
+    })
+  }
+  const decrease = ()=>{
+    setAmount((prevAmount)=>{
+      let newAmount = prevAmount - 1 
+      if(newAmount<1){
+        newAmount=1
+      }
+      return newAmount
+    })
+  }
+  return (
+  <Wrapper>
+  <h4>addToCart </h4>
+  <div className="btn-container">
+  
+  <AmountButtons amount={amount} increase={increase} decrease={decrease}/>
+  <Link to ="/cart" className='btn'>
+    Add To Cart
+  </Link>
+  </div>
+  </Wrapper>)
 }
 
 const Wrapper = styled.section`
