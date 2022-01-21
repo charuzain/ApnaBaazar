@@ -32,6 +32,7 @@ export const ProductsProvider = ({ children }) => {
     dispatch({ type: GET_PRODUCTS_BEGIN }) // dispatching action, this will set up the loading
     axios.get(url).then((res) => {
       const products = res.data
+      console.log(products)
       dispatch({ type: GET_PRODUCTS_END, payload: products })
     })
       .catch((error) => dispatch({ type: GET_PRODUCTS_ERROR }));
