@@ -6,12 +6,15 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter } from "react-router-dom";
 import { ProductsProvider } from "./context/products_context";
+import { FilterProvider } from "./context/filter_context";
 
 ReactDOM.render(
   <ProductsProvider>
+    <FilterProvider>
     <BrowserRouter>
-      <App />
+      <App/>
     </BrowserRouter>
+ </FilterProvider>
   </ProductsProvider>,
 
   document.getElementById("root")
