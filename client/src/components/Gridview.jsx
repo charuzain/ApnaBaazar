@@ -12,6 +12,7 @@ export default function GridView(props) {
           return <Product key={product.id}{...product}/>
         })}
       </div>
+      
     </Wrapper>
   )
 }

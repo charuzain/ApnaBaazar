@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import AddToCart from './AddToCart'
 
 
 
@@ -18,6 +19,7 @@ const ListView = ({ products }) => {
             <p>{description.substring(0,150)}...</p>
             <Link to ={`/products/${id}`} className='btn'>
               Details </Link>
+            {/* <AddToCart product={product}/> */}
           </div>
           </article>)
       })}
