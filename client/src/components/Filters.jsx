@@ -17,15 +17,19 @@ export default function () {
     all_products
   } = useFilterContext()
 
-    // const categories =
+  const getUniqueValues = (data, type) => {
+    let unique = data.map((item) => item[type])
+    // console.log(unique)
+    return ['all', ...new Set(unique)]
 
-
-
+  }
+  const categories = getUniqueValues(all_products, 'category')
+  console.log(categories)
   return (
     <Wrapper>
       <div className='content'>
         <form onSubmit={(e) => e.preventDefault()}>
-         
+
           <div className='form-control'>
             <input
               type='text'
@@ -36,7 +40,7 @@ export default function () {
               onChange={updateFilters}
             />
           </div>
-        
+
         </form>
       </div>
     </Wrapper>
@@ -75,34 +79,7 @@ const Wrapper = styled.section`
   .active {
     border-color: var(--clr-grey-5);
   }
-  .company {
-    background: var(--clr-grey-10);
-    border-radius: var(--radius);
-    border-color: transparent;
-    padding: 0.25rem;
-  }
-  .colors {
-    display: flex;
-    align-items: center;
-  }
-  .color-btn {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    background: #222;
-    margin-right: 0.5rem;
-    border: none;
-    cursor: pointer;
-    opacity: 0.5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    svg {
-      font-size: 0.5rem;
-      color: var(--clr-white);
-    }
-  }
+
   .all-btn {
     display: flex;
     align-items: center;
@@ -119,14 +96,7 @@ const Wrapper = styled.section`
   .price {
     margin-bottom: 0.25rem;
   }
-  .shipping {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    text-transform: capitalize;
-    column-gap: 0.5rem;
-    font-size: 1rem;
-  }
+
   .clear-btn {
     background: var(--clr-red-dark);
     color: var(--clr-white);
