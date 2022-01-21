@@ -12,7 +12,7 @@ ReactDOM.render(
   <ProductsProvider>
     <FilterProvider>
     <BrowserRouter>
-      <App />
+      <App/>
     </BrowserRouter>
  </FilterProvider>
   </ProductsProvider>,
