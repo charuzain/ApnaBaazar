@@ -21,7 +21,8 @@ module.exports = (db) => {
       .catch((err) => err)
   }
   const getAllProducts = () => {
-    const query = `SELECT * FROM products`;
+    const query = `SELECT products.* , categories.name as category FROM products JOIN categories 
+    ON products.category_id = categories.id`;
     return db
       .query(query)
       .then((result) => result.rows)
