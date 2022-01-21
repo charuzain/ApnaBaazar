@@ -5,6 +5,7 @@ import { useFilterContext } from '../context/filter_context'
 import ProductList from '../components/ProductList'
 import PageHero from '../components/PageHero'
 import Filters from '../components/Filters'
+import Sort from '../components/Sort'
 
 
 const ProductsPage = () => {
@@ -15,7 +16,10 @@ const ProductsPage = () => {
           <div className="section-center products">
             <Filters/>
               <div>
+                <Sort/>
                 <ProductList/>
+
+        
 
               </div>
             
