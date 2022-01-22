@@ -1,3 +1,5 @@
+let format = require("pg-format");
+
 module.exports = (db) => {
   const getUsers = () => {
     const query = {
@@ -137,15 +139,16 @@ VALUES ($1 , $2 , $3) RETURNING *;`,
   };
 
   const addOrderToDB = (user_id, cart) => {
-    const query2 = {
+    const query = {
       text: `INSERT INTO orders (order_total,user_id) VALUES ($1,$2) RETURNING *`,
       values: [cart.total, user_id],
     };
-    console.log(query2);
-    db.query(query2)
+    console.log(query);
+    return db
+      .query(query)
       .then((data) => {
         console.log(data.rows[0].id);
-        addLineItemsToDB(data.rows[0].id, cart);
+        return addLineItemsToDB(data.rows[0].id, cart);
       })
       .catch((err) => {
         console.log("query error:", err.stack);
@@ -156,14 +159,14 @@ VALUES ($1 , $2 , $3) RETURNING *;`,
     for (let item of cart.items) {
       lineItems.push([item.quantity, item.product_id, order_id]);
     }
-    let query3 = format(
+    let query = format(
       "INSERT INTO line_items (quantity, product_id , order_id) VALUES %L RETURNING *",
       lineItems
     );
     return db
-      .query(query3)
+      .query(query)
       .then((result) => {
-        console.log(result.rows[0]);
+        console.log("line items ", result.rows[0]);
         return result.rows[0];
       })
       .catch((err) => {
