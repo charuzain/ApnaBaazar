@@ -2,10 +2,37 @@ import React from 'react'
 import styled from 'styled-components'
 import { useCartContext } from '../context/cart_context'
 import { Link } from 'react-router-dom'
-import { CartContent, PageHero } from '../components'
-
+// import { CartContent, PageHero } from '../components'
+import PageHero from '../components/PageHero'
+import CartContent from '../components/Cart/CartContent'
+import Header from '../components/Header'
 const CartPage = () => {
-  return <h4>cart page</h4>
+
+  const {cart} =useCartContext();
+  console.log(cart)
+  if(cart.length < 1){
+    return (<Wrapper className='page-100'>
+      {/* <Header/> */}
+      <div className="empty">
+        <h2>Cart is Empty</h2>
+        <Link to ='/products' className ='btn'>
+          Fill Your Cart !!!
+          </Link>
+          </div>
+        '
+      
+    </Wrapper>
+    )
+  }
+  return <main>
+    {/* <Header/> */}
+    {/* <PageHero title ='cart'> */}
+      <Wrapper className='page'>
+        <CartContent/>
+      </Wrapper>
+
+    {/* </PageHero> */}
+  </main>
 }
 
 const Wrapper = styled.main`
