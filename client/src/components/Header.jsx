@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 const Header = () => {
   return (
     <div className="mynav">
@@ -34,29 +32,16 @@ const Header = () => {
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="/aboutus">AboutUs</a>
               </li>
-
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="/products" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Products
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a className="dropdown-item" href="#">Fresh Produce</a></li>
-                  <li><a className="dropdown-item" href="#">Pantry</a></li>
-                  {/* <li><hr className="dropdown-divider" /></li>
-                      <li><a className="dropdown-item" href="#">Something else here</a></li> */}
-                </ul>
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/featured">Featured Products</a>
               </li>
+
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/products">Products</a>
+              </li>
+
+
             </ul>
-            {/* <!-- Left links --> */}
-
-            {/* <!-- Center links --> */}
-            <form className="d-flex" >
-              <input className="form-control me-2 d-flex justify-content-center" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-success" type="submit">Search</button>
-            </form>
-            {/* <!-- Center links --> */}
-
-            {/* <!-- Right links --> */}
             <ul className="nav-item">
               <a className="nav-link active" aria-current="page" href="/login">SignIn</a>
             </ul>
