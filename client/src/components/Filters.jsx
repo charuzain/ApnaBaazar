@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useFilterContext } from '../context/filter_context'
-import { FaCheck } from 'react-icons/fa'
 
-export default function () {
+const Filters = () => {
   const {
     filters: {
       text,
@@ -24,7 +23,7 @@ export default function () {
 
   }
   const categories = getUniqueValues(all_products, 'category')
-  console.log(categories)
+  // console.log(categories)
   return (
     <Wrapper>
       <div className='content'>
@@ -40,8 +39,44 @@ export default function () {
               onChange={updateFilters}
             />
           </div>
+          <div className='form-control'>
+            <h5>category</h5>
+            <div>
+              {categories.map((c, index) => {
+                return (
+                  <button
+                    key={index}
+                    onClick={updateFilters}
+                    type='button'
+                    name='category'
+                    className={`${category === c ? 'active' : null
+                      }`}
+                  >
+                    {c}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          <div className='form-control'>
+            <h5>price</h5>
+            <p className='price'>${price}.00</p>
+            <input
+              type='range'
+              name='price'
+              min={min_price}
+              max={max_price}
+              onChange={updateFilters}
+              value={price}
+            />
+          </div>
 
         </form>
+        <button type='button' className='clear-btn' onClick={clearFilters}>
+          {' '}
+          clear filters
+        </button>
       </div>
     </Wrapper>
   )
@@ -55,7 +90,7 @@ const Wrapper = styled.section`
     }
   }
   .search-input {
-    padding: 0.5rem;
+    padding: 0.1rem;
     background: var(--clr-grey-10);
     border-radius: var(--radius);
     border-color: transparent;
@@ -78,27 +113,16 @@ const Wrapper = styled.section`
   }
   .active {
     border-color: var(--clr-grey-5);
+    
   }
 
-  .all-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 0.5rem;
-    opacity: 0.5;
-  }
-  .active {
-    opacity: 1;
-  }
-  .all-btn .active {
-    text-decoration: underline;
-  }
+ 
   .price {
     margin-bottom: 0.25rem;
   }
 
   .clear-btn {
-    background: var(--clr-red-dark);
+    background: green;
     color: var(--clr-white);
     padding: 0.25rem 0.5rem;
     border-radius: var(--radius);
@@ -110,3 +134,4 @@ const Wrapper = styled.section`
     }
   }
 `
+export default Filters;
