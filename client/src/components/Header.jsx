@@ -39,6 +39,9 @@ const Header = () => {
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="/products">Products</a>
               </li>
+              <ul className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/checkout" >Checkout</a>
+              </ul>
 
 
             </ul>
@@ -50,7 +53,7 @@ const Header = () => {
             </ul>
             <ul className="nav-item">
               {/* <!-- Icon --> */}
-              <a class="text-reset me-3" href="/checkout">
+              <a class="text-reset me-3" href="/cart">
                 <i class="fas fa-shopping-cart"></i>
               </a>
             </ul>
