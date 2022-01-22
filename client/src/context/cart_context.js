@@ -6,6 +6,7 @@ import {
   TOGGLE_CART_ITEM_AMOUNT,
   CLEAR_CART,
   COUNT_CART_TOTALS,
+  CLEAR_FILTERS,
 } from '../actions'
 
 // check if an item by the name cart exist in local storage 
@@ -39,12 +40,20 @@ export const CartProvider = ({ children }) => {
   }
 
   // function to remove item from cart
-  const removeItem = (id) => { }
+  const removeItem = (id) => {
+    dispatch({ type: REMOVE_CART_ITEM, payload: id })
 
-  const toggleAmount = (id, value) => { }
+  }
+
+  const toggleAmount = (id, value) => {
+ 
+   }
 
   //function to clear cart
-  const clearCart = () => { }
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART})
+
+   }
 
   // we are not persisiting the cart data
   //everytime there is change in cart 
