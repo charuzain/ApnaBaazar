@@ -19,8 +19,6 @@ const ProductsPage = () => {
                 <Sort/>
                 <ProductList/>
 
-        
-
               </div>
             
 
