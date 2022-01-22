@@ -7,14 +7,18 @@ import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter } from "react-router-dom";
 import { ProductsProvider } from "./context/products_context";
 import { FilterProvider } from "./context/filter_context";
+import { CartProvider } from "./context/cart_context";
+
 
 ReactDOM.render(
   <ProductsProvider>
     <FilterProvider>
-    <BrowserRouter>
-      <App/>
-    </BrowserRouter>
- </FilterProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </CartProvider>
+    </FilterProvider>
   </ProductsProvider>,
 
   document.getElementById("root")
