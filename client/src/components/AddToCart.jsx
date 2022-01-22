@@ -1,47 +1,49 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useCartContext } from '../context/cart_context'
 import AmountButtons from './AmountButtons'
-// import { inc } from 'semver'
 
-const AddToCart = (props ) => {
+
+const AddToCart = (props) => {
+  const { addToCart } = useCartContext()
   console.log(props)
   const { id, quantity } = props.product
   console.log(quantity)
-  const [amount , setAmount] = useState(1)
+  const [amount, setAmount] = useState(1)
 
   // when user increase the quantity , increase by 1 
   // if quantity of item is greater than item in stock , set new amount to be 
   // equal to quanity in stock
-  const increase = ()=>{
-    setAmount((prevAmount)=>{
+  const increase = () => {
+    setAmount((prevAmount) => {
       let newAmount = prevAmount + 1
-      if(newAmount>quantity){
+      if (newAmount > quantity) {
         newAmount = quantity
       }
       return newAmount
     })
   }
-  const decrease = ()=>{
-    setAmount((prevAmount)=>{
-      let newAmount = prevAmount - 1 
-      if(newAmount<1){
-        newAmount=1
+  const decrease = () => {
+    setAmount((prevAmount) => {
+      let newAmount = prevAmount - 1
+      if (newAmount < 1) {
+        newAmount = 1
       }
       return newAmount
     })
   }
   return (
-  <Wrapper>
-  <h4>addToCart </h4>
-  <div className="btn-container">
-  
-  <AmountButtons amount={amount} increase={increase} decrease={decrease}/>
-  <Link to ="/cart" className='btn'>
-    Add To Cart
-  </Link>
-  </div>
-  </Wrapper>)
+    <Wrapper>
+      <h4>addToCart </h4>
+      <div className="btn-container">
+
+        <AmountButtons amount={amount} increase={increase} decrease={decrease} />
+        <Link to="/cart" className='btn' onClick={()=>addToCart(id,amount,props.product)}>
+          Add To Cart
+        </Link>
+      </div>
+    </Wrapper>)
 }
 
 const Wrapper = styled.section`
