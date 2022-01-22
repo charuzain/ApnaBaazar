@@ -12,7 +12,7 @@ const cart_reducer = (state, action) => {
     const { id, amount, product } = action.payload
     // check if the item is already added in the cart
     const tempItem = state.cart.find((i) => i.id === id)
-
+    
     // if item exist in the cart , iterate and check where item is update the amount 
     if (tempItem) {
       const tempCart = state.cart.map((cartItem) => {
