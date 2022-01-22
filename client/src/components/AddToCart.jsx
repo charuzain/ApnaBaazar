@@ -5,11 +5,11 @@ import { useCartContext } from '../context/cart_context'
 import AmountButtons from './AmountButtons'
 
 
-const AddToCart = (props) => {
+  const AddToCart = (props) => {
   const { addToCart } = useCartContext()
-  console.log(props)
+  // console.log(props)
   const { id, quantity } = props.product
-  console.log(quantity)
+  // console.log(quantity)
   const [amount, setAmount] = useState(1)
 
   // when user increase the quantity , increase by 1 
