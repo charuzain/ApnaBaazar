@@ -14,7 +14,7 @@ const productRouter = require("./routes/products");
 const loginRouter = require("./routes/login");
 const logoutRouter = require("./routes/logout");
 const registerRouter = require("./routes/register");
-// const orderrRouter = require("./routes/order");
+const orderRouter = require("./routes/order");
 const cartRouter = require("./routes/cart");
 
 const app = express();
@@ -40,8 +40,7 @@ app.use("/api/products", productRouter(dbHelpers));
 app.use("/login", loginRouter(dbHelpers));
 app.use("/logout", logoutRouter());
 app.use("/register", registerRouter(dbHelpers));
-// app.use("/order", orderrRouter);
+app.use("/order", orderRouter(dbHelpers));
 app.use("/cart", cartRouter(dbHelpers));
-
 
 module.exports = app;

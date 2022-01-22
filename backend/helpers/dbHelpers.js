@@ -1,7 +1,7 @@
 module.exports = (db) => {
   const getUsers = () => {
     const query = {
-      text: 'SELECT * FROM users',
+      text: "SELECT * FROM users",
     };
 
     return db
@@ -13,13 +13,13 @@ module.exports = (db) => {
   const getUserByEmail = (email) => {
     const query = {
       text: `SELECT id,email, password FROM users WHERE email = $1`,
-      values: [email]
-    }
+      values: [email],
+    };
     return db
       .query(query)
       .then((result) => result.rows[0])
-      .catch((err) => err)
-  }
+      .catch((err) => err);
+  };
   const getAllProducts = () => {
     const query = `SELECT products.* , categories.name as category FROM products JOIN categories 
     ON products.category_id = categories.id`;
@@ -46,7 +46,7 @@ module.exports = (db) => {
       .catch((err) => err);
   };
   const addUser = (user) => {
-    console.log(user)
+    console.log(user);
     const query = {
       text: `INSERT INTO
       users(first_name,last_name,email,password,phone,shipping_address)
@@ -136,9 +136,51 @@ VALUES ($1 , $2 , $3) RETURNING *;`,
       .catch((err) => err);
   };
 
-  return { getUsers, getUserByEmail, getAllProducts, getSingleProduct, addUser, getUserCart, getCartById, addProductToCart, updateCart, removeProductFromCart };
-
-
-
-
+  const addOrderToDB = (user_id, cart) => {
+    const query2 = {
+      text: `INSERT INTO orders (order_total,user_id) VALUES ($1,$2) RETURNING *`,
+      values: [cart.total, user_id],
+    };
+    console.log(query2);
+    db.query(query2)
+      .then((data) => {
+        console.log(data.rows[0].id);
+        addLineItemsToDB(data.rows[0].id, cart);
+      })
+      .catch((err) => {
+        console.log("query error:", err.stack);
+      });
+  };
+  const addLineItemsToDB = (order_id, cart) => {
+    let lineItems = [];
+    for (let item of cart.items) {
+      lineItems.push([item.quantity, item.product_id, order_id]);
+    }
+    let query3 = format(
+      "INSERT INTO line_items (quantity, product_id , order_id) VALUES %L RETURNING *",
+      lineItems
+    );
+    return db
+      .query(query3)
+      .then((result) => {
+        console.log(result.rows[0]);
+        return result.rows[0];
+      })
+      .catch((err) => {
+        console.log("query error:", err.stack);
+      });
+  };
+  return {
+    getUsers,
+    getUserByEmail,
+    getAllProducts,
+    getSingleProduct,
+    addUser,
+    getUserCart,
+    getCartById,
+    addProductToCart,
+    updateCart,
+    removeProductFromCart,
+    addOrderToDB,
+  };
 };
