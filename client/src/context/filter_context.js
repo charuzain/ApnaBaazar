@@ -61,9 +61,20 @@ export const FilterProvider = ({ children }) => {
   const updateFilters = (e) => {
     let name = e.target.name
     let value = e.target.value
+    if (name === 'category') {
+      value = e.target.textContent  // to get text inside of a button
+    }
+    if (name === 'price') {
+      value = Number(value)
+    }
+    if (name === 'shipping') {
+      value = e.target.checked
+    }
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
   }
-  const clearFilters = () => { }
+  const clearFilters = () => { 
+    dispatch({ type: CLEAR_FILTERS })
+  }
 
   return (
     <FilterContext.Provider value={{...state,setGridView,setListView,updateSort,updateFilters,clearFilters}}>
