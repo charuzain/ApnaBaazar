@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Order from "./components/Order";
+import OrderComplete from "./components/OrderComplete";
 const App = () => {
   return (
     <Routes>
@@ -17,6 +18,7 @@ const App = () => {
       <Route path="/products" element={<ProductsPage />}></Route>
       <Route path="products/:id" element={<SingleProductPage />}></Route>
       <Route path="/checkout" element={<Order />}></Route>
+      <Route path="/orderComplete" element={<OrderComplete />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
     </Routes>

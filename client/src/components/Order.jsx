@@ -1,28 +1,60 @@
 import React, { useReducer, useState } from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './Footer';
-import Header from './Header';
+import Axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 export default function Order() {
-  const [firstName , setFirstName] = useState('');
-  const [lastName , setLastName] = useState('');
-  const [email , setEmail] = useState('');
-  const [total , setTotal] = useState('');
-  const cartItems = [{ id: '1', name: 'Milk', price: 10 },
-  { id: '1', name: 'Sushi', price: 10 },
-  { id: '1', name: 'Chicken', price: 10 }];
+
+  const navigate = useNavigate();
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+  const [cardName, setCardName] = useState('');
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardCvv, setCardCvv] = useState('');
+  const [cardExpire, setCardExpire] = useState('');
+  const [total, setTotal] = useState('');
+  const cartItems = [{ product_id: '4', name: 'Milk', quantity: 4, price: 15 },
+  { product_id: '1', name: 'Sushi', quantity: 1, price: 15 },
+  { product_id: '2', name: 'Chicken', quantity: 2, price: 20 },
+  { product_id: '3', name: 'Eggs', quantity: 3, price: 30 },
+  { product_id: '5', name: 'Atta', quantity: 3, price: 30 }];
 
   const submitHandler = event => {
     event.preventDefault();
     const cart = {
-      items : cartItems,
+      items: cartItems,
       firstName: firstName,
-      lastName:lastName,
-      email:email,
-      total:20,
+      lastName: lastName,
+      address: address,
+      email: email,
+      total: cartTotal(),
     }
     console.log(cart);
+
+    Axios.post('http://localhost:3001/order',
+      {
+        cart: cart,
+        "user_id": "1",
+      })
+      .then((response) => {
+        console.log("response", response);
+        if (response.status === 200) {
+          navigate('/orderComplete');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
+  const cartTotal = function () {
+    let total = 0;
+    cartItems.forEach(item => total += item.price);
+    return total;
+  }
+
   return (
     <div>
       <checkout>
@@ -33,14 +65,15 @@ export default function Order() {
                 <div class="col-md-5 col-lg-4 order-md-last">
                   <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-primary">Your cart</span>
-                    <span class="badge bg-primary rounded-pill">3</span>
+                    <span class="badge bg-primary rounded-pill">{cartItems.length}</span>
                   </h4>
                   <ul class="list-group mb-3">
                     {cartItems.map((item) => (
                       <div>
                         <li class="list-group-item d-flex justify-content-between lh-sm">
                           <div>
-                            <h6 class="my-0">{item.name}</h6>
+                            <h5 class="my-0">{item.name}</h5>
+                            <small class="my-0">Qty:{item.quantity}</small>
                           </div>
                           <span class="text-muted">${item.price}</span>
                         </li>
@@ -48,13 +81,13 @@ export default function Order() {
 
                     ))}
                     <li class="list-group-item d-flex justify-content-between">
-                      <span>Total (CAD)</span>
-                      <strong>$20</strong>
+                      <strong>Total (CAD)</strong>
+                      <strong>Total Items ({cartItems.length}) : ${cartTotal()}</strong>
                     </li>
                   </ul>
                 </div>
                 <div class="col-md-7 col-lg-8">
-                 <h4 class="mb-3">Billing address</h4>
+                  <h4 class="mb-3">Billing address</h4>
 
                   <div class="row g-3">
                     <div class="col-sm-6">
@@ -78,6 +111,48 @@ export default function Order() {
                       <input type="email" class="form-control" id="email" onChange={(e) => setEmail(e.target.value)} placeholder="Enter your Email" />
                       <div class="invalid-feedback">
                         Please enter a valid email address for shipping updates.
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="address">Address</label>
+                      <input type="text" class="form-control" id="address" placeholder="1234 Main St" onChange={(e) => setAddress(e.target.value)} required />
+                      <div class="invalid-feedback">
+                        Please enter your shipping address.
+                      </div>
+                    </div>
+                     <hr class="my-4" />
+                    <h4 class="mb-3">Payment</h4>
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="cc-name">Name on card</label>
+                        <input type="text" class="form-control" id="cardName" placeholder="" onChange={(e) => setCardName(e.target.value)} required />
+                        <small class="text-muted">Full name as displayed on card</small>
+                        <div class="invalid-feedback">
+                          Name on card is required
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="cc-number">Credit card number</label>
+                        <input type="text" class="form-control" id="cardNumber" placeholder="" onChange={(e) => setCardNumber(e.target.value)} required />
+                        <div class="invalid-feedback">
+                          Credit card number is required
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-3 mb-3">
+                        <label for="cc-expiration">Expiration</label>
+                        <input type="text" class="form-control" id="cardExpire" placeholder="" required />
+                        <div class="invalid-feedback">
+                          Expiration date required
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="cc-expiration">CVV</label>
+                        <input type="text" class="form-control" id="cardCvv" placeholder="" onChange={(e) => setCardCvv(e.target.value)} required />
+                        <div class="invalid-feedback">
+                          Security code required
+                        </div>
                       </div>
                     </div>
                   </div>
