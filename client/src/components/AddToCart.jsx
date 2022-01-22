@@ -5,7 +5,7 @@ import { useCartContext } from '../context/cart_context'
 import AmountButtons from './AmountButtons'
 
 
-  const AddToCart = (props) => {
+const AddToCart = (props) => {
   const { addToCart } = useCartContext()
   // console.log(props)
   const { id, quantity } = props.product
@@ -39,7 +39,7 @@ import AmountButtons from './AmountButtons'
       <div className="btn-container">
 
         <AmountButtons amount={amount} increase={increase} decrease={decrease} />
-        <Link to="/cart" className='btn' onClick={()=>addToCart(id,amount,props.product)}>
+        <Link to="/cart" className='btn' onClick={() => addToCart(id, amount, props.product)}>
           Add To Cart
         </Link>
       </div>
