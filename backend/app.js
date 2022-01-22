@@ -1,6 +1,7 @@
 const db = require("./db");
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 
 // DB Helper functions
 const dbHelpers = require("./helpers/dbHelpers")(db);
@@ -31,6 +32,7 @@ app.use(
     maxAge: 24 * 60 * 60 * 1000,
   })
 );
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, "public")));
 
