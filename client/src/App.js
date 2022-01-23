@@ -7,6 +7,11 @@ import SingleProductPage from "./pages/SingleProductPage";
 import ProductsPage from "./pages/ProductsPage";
 import Home from "./components/Home";
 import Login from "./components/Login";
+// import Signup from "./components/Signup";
+import Register from "./components/Register";
+// import Checkout from "./components/Checkout";
+
+import Axios from "axios";
 import Signup from "./components/Signup";
 import Order from "./components/Order";
 import OrderComplete from "./components/OrderComplete";
@@ -23,6 +28,8 @@ const App = () => {
       <Route path="/orderComplete" element={<OrderComplete />} />
       <Route path="/cart" element={<CartPage />}></Route>
       <Route path="/login" element={<Login />} />
+      {/* <Route path="/signup" element={<Signup />} /> */}
+      <Route path="/register" element={<Register />} />
       <Route path="/signup" element={<Signup />} />
       {/* <Route path="/checkout" element={<Checkout />} /> */}
     </Routes>
