@@ -6,11 +6,13 @@ import ProductList from '../components/ProductList'
 import PageHero from '../components/PageHero'
 import Filters from '../components/Filters'
 import Sort from '../components/Sort'
+import Header from '../components/Header'
 
 
 const ProductsPage = () => {
   return (
     <main>
+      <Header/>
       <PageHero title="products"/>
         <Wrapper className='page'>
           <div className="section-center products">
@@ -18,15 +20,9 @@ const ProductsPage = () => {
               <div>
                 <Sort/>
                 <ProductList/>
-
               </div>
-            
-
           </div>
-
-
         </Wrapper>
-     
     </main>
   )
 }
