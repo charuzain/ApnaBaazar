@@ -10,8 +10,9 @@ const CartPage = () => {
   const {cart} =useCartContext();
   console.log(cart)
   if(cart.length < 1){
-    return (<Wrapper className='page-100'>
-      {/* <Header/> */}
+    return (
+    <Wrapper className='page-100'>
+
       <div className="empty">
         <h2>Cart is Empty</h2>
         <Link to ='/products' className ='btn'>
@@ -22,7 +23,7 @@ const CartPage = () => {
     )
   }
   return <main>
-    {/* <Header/> */}
+    <Header/>
     {/* <PageHero title ='cart'> */}
       <Wrapper className='page'>
         <CartContent/>

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import CartColumns from './CartColumns'
 import CartItem from './CartItem.jsx'
 import CartTotals from './CartTotals'
-import CartButtons from './CartButtons'
 
 const CartContent = () => {
   const { cart, clearCart } = useCartContext()
@@ -21,7 +20,6 @@ const CartContent = () => {
       <button type='button' className='link-btn clear-btn' onClick={clearCart}>Clear Shopping Cart</button>
       </div>
       <CartTotals />
-      <CartButtons/>
     </Wrapper>
   )
 }

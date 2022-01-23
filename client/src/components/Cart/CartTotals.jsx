@@ -6,16 +6,18 @@ import styled from 'styled-components'
 export default function () {
   const {total_amount} = useCartContext()
   const shipping_fee = 5.34
-  const tax = total_amount * 0.05
+  const tax = Math.round((total_amount * 0.05)*100)/100
+  const order_total = total_amount + tax + shipping_fee
+  const total = order_total.toFixed(2)
   return (
     <Wrapper>
     <div>
       <article>
           <h5>Subtotal : <span>${total_amount}.00</span></h5> 
-          <p>Tax:${tax}.00</p> 
+          <p>Tax: <span>${tax}</span></p> 
           <p>Shipping Fee : <span>${shipping_fee} </span></p> 
       <hr />
-          <h4>Order Total : <span>$ {total_amount + tax + shipping_fee} </span></h4>
+          <h4>Order Total : <span>$ {total} </span></h4>
         </article>
     
     <Link to ='/checkout' className='btn'>Proceed To Payment</Link>
