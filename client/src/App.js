@@ -10,6 +10,8 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Order from "./components/Order";
 import OrderComplete from "./components/OrderComplete";
+import Checkout from "./components/Checkout";
+import CartPage from "./pages/CartPage";
 const App = () => {
   return (
     <Routes>
@@ -19,8 +21,10 @@ const App = () => {
       <Route path="products/:id" element={<SingleProductPage />}></Route>
       <Route path="/checkout" element={<Order />}></Route>
       <Route path="/orderComplete" element={<OrderComplete />} />
+      <Route path="/cart" element={<CartPage />}></Route>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/checkout" element={<Checkout />} />
     </Routes>
   );
 };

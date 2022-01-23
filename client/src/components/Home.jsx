@@ -2,12 +2,12 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import "../styles/home.css"
+import FeaturedProducts from './FeaturedProducts';
 
 const Home = () => {
   return (
     <div className='body-container'>
       <Header />
-
       <div className='carousel'>
       <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
         <ol class="carousel-indicators">
@@ -111,7 +111,6 @@ const Home = () => {
       {/* <div className="product">
         <h1>Top Sellers</h1>
       </div> */}
-
     <Footer />
     </div>
   );
