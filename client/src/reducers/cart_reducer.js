@@ -12,7 +12,7 @@ const cart_reducer = (state, action) => {
     const { id, amount, product } = action.payload
     // check if the item is already added in the cart
     const tempItem = state.cart.find((i) => i.id === id)
-    
+
     // if item exist in the cart , iterate and check where item is update the amount 
     if (tempItem) {
       const tempCart = state.cart.map((cartItem) => {
@@ -42,14 +42,48 @@ const cart_reducer = (state, action) => {
       return { ...state, cart: [...state.cart, newItem] }
     }
   }
-  if(action.type === REMOVE_CART_ITEM){
-    const tempCart = state.cart.filter((item)=>item.id !== action.payload)
-    return {...state , cart :tempCart}
+  if (action.type === REMOVE_CART_ITEM) {
+    const tempCart = state.cart.filter((item) => item.id !== action.payload)
+    return { ...state, cart: tempCart }
   }
 
   if (action.type === CLEAR_CART) {
     return { ...state, cart: [] }
   }
+  if (action.type === TOGGLE_CART_ITEM_AMOUNT) {
+    const {id , value} = action.payload
+    console.log(id , value)
+    console.log(state.cart)
+    const tempCart = state.cart.map((item)=>{
+      if(item.id === id){
+        if(value === 'increase'){
+        let newAmount = item.amount + 1
+        console.log(newAmount)
+        console.log(item.max)
+        if(newAmount > item.max){
+          newAmount = item.max
+          console.log(item)
+          console.log(newAmount)
+        }
+        return {...item , amount:newAmount}
+        }
+        if(value === 'decrease'){
+         
+            let newAmount = item.amount - 1
+            if (newAmount < 1) {
+              newAmount = 1
+            }
+            return { ...item, amount: newAmount }
+        }
+      }
+      else{
+        return item
+      }
+      
+    })
+    return { ...state, cart: tempCart }
+  }
+
 }
 
 export default cart_reducer
