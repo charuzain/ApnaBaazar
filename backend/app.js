@@ -17,6 +17,7 @@ const logoutRouter = require("./routes/logout");
 const registerRouter = require("./routes/register");
 const orderRouter = require("./routes/order");
 const cartRouter = require("./routes/cart");
+const paymentRouter = require("./routes/payment");
 
 const app = express();
 
@@ -44,5 +45,6 @@ app.use("/logout", logoutRouter());
 app.use("/register", registerRouter(dbHelpers));
 app.use("/order", orderRouter(dbHelpers));
 app.use("/cart", cartRouter(dbHelpers));
+app.use("/create-payment-intent", paymentRouter());
 
 module.exports = app;

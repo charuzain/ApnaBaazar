@@ -157,7 +157,7 @@ VALUES ($1 , $2 , $3) RETURNING *;`,
   const addLineItemsToDB = (order_id, cart) => {
     let lineItems = [];
     for (let item of cart.items) {
-      lineItems.push([item.quantity, item.product_id, order_id]);
+      lineItems.push([item.amount, item.product_id, order_id]);
     }
     let query = format(
       "INSERT INTO line_items (quantity, product_id , order_id) VALUES %L RETURNING *",
