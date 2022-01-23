@@ -46,7 +46,7 @@ const Header = () => {
               <a className="nav-link active" aria-current="page" href="/login">SignIn</a>
             </ul>
             <ul className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/Signup" >SignUp</a>
+              <a className="nav-link active" aria-current="page" href="/Register" >SignUp</a>
             </ul>
             <ul className="nav-item">
               {/* <!-- Icon --> */}
