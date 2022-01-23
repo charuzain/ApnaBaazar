@@ -9,18 +9,19 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Checkout from "./components/Checkout";
+import CartPage from "./pages/CartPage";
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/featured" element={<FeaturedProducts />}></Route>
       <Route path="/products" element={<ProductsPage />}></Route>
-
-
       <Route path="products/:id" element={<SingleProductPage />}></Route>
-      <Route path="/checkout" element={<Checkout />}></Route>
+      <Route path="/cart" element={<CartPage />}></Route>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/checkout" element={<Checkout />} />
+
     </Routes>
   );
 };

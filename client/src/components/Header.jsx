@@ -1,4 +1,5 @@
 import React from 'react';
+import CartButtons from './Cart/CartButtons';
 
 const Header = () => {
   return (
@@ -39,7 +40,9 @@ const Header = () => {
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="/products">Products</a>
               </li>
-
+              <ul className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/checkout" >Checkout</a>
+              </ul>
 
             </ul>
             <ul className="nav-item">
@@ -49,10 +52,12 @@ const Header = () => {
               <a className="nav-link active" aria-current="page" href="/Signup" >SignUp</a>
             </ul>
             <ul className="nav-item">
+              
               {/* <!-- Icon --> */}
-              <a class="text-reset me-3" href="/checkout">
+              <a className="text-reset me-3" href="/cart">
+                <CartButtons/>
                 <i class="fas fa-shopping-cart"></i>
-              </a>
+              </a> 
             </ul>
             {/* <!-- Right links --> */}
 
