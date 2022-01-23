@@ -9,7 +9,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 // import Signup from "./components/Signup";
 import Register from "./components/Register";
-import Checkout from "./components/Checkout";
+// import Checkout from "./components/Checkout";
 
 import Axios from "axios";
 import Signup from "./components/Signup";
