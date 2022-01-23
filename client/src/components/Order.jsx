@@ -1,33 +1,54 @@
-import React, { useReducer, useState } from 'react';
+import React, { Fragment, useReducer, useState } from 'react';
 import Footer from './Footer';
 import Axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { useCartContext } from '../context/cart_context'
+import {CardElement ,  useStripe } from '@stripe/react-stripe-js';
+import { Elements , useElements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe("STRIPE_PUBLISHABLE_KEY");
 
 export default function Order() {
-  
+  const elements = useElements();
+  const stripe = useStripe();
   const {cart , total_amount } =useCartContext();
-
   console.log(cart , total_amount);
-
   const shipping_fee = 5.34;
   const tax = Math.round((total_amount * 0.05)*100)/100
   const order_total = total_amount + tax + shipping_fee
   const total = order_total.toFixed(2);
 
   const navigate = useNavigate();
-
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
-  const [cardName, setCardName] = useState('');
-  const [cardNumber, setCardNumber] = useState('');
-  const [cardCvv, setCardCvv] = useState('');
-  const [cardExpire, setCardExpire] = useState('');
   
-  const submitHandler = event => {
+  const submitHandler = async (event) => {
     event.preventDefault();
+
+    if(!stripe || !elements) {
+      return;
+    }
+    const {clientSecret} = await fetch("/create-payment-intent" , {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ paymentMethodType:'card', currency: 'cad' }),
+    }).then( r => r.json());
+
+    console.log("clientSecret" , clientSecret);
+    
+    const {error: stripeError,paymentIntent} = await stripe.confirmCardPayment(
+      clientSecret, {
+        payment_method: {
+          card : elements.getElement(CardElement),
+        }
+      }
+    )
+      if(stripeError) {
+        console.log("Card Error" , stripeError.message);
+      }
     const postCart = {
       items: cart,
       firstName: firstName,
@@ -60,11 +81,12 @@ export default function Order() {
   }
 
   return (
-    <div>
+  
+<div>
       <checkout>
         <div class="container">
           <main>
-            <form onSubmit={submitHandler}>
+            <form id="payment-form" onSubmit={submitHandler}>
               <div class="row g-5">
                 <div class="col-md-5 col-lg-4 order-md-last">
                   <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -77,6 +99,7 @@ export default function Order() {
                         <li class="list-group-item d-flex justify-content-between lh-sm">
                           <div>
                             <h5 class="my-0">{item.name}</h5>
+                            <small >Qty:{item.amount}</small>
                           </div>
                           <span class="text-muted">${item.price * item.amount}</span>
                         </li>
@@ -141,41 +164,9 @@ export default function Order() {
                         Please enter your shipping address.
                       </div>
                     </div>
-                     <hr class="my-4" />
+                    <hr class="my-4" />
                     <h4 class="mb-3">Payment</h4>
-                    <div class="row">
-                      <div class="col-md-6 mb-3">
-                        <label for="cc-name">Name on card</label>
-                        <input type="text" class="form-control" id="cardName" placeholder="" onChange={(e) => setCardName(e.target.value)} required />
-                        <small class="text-muted">Full name as displayed on card</small>
-                        <div class="invalid-feedback">
-                          Name on card is required
-                        </div>
-                      </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="cc-number">Credit card number</label>
-                        <input type="text" class="form-control" id="cardNumber" placeholder="" onChange={(e) => setCardNumber(e.target.value)} required />
-                        <div class="invalid-feedback">
-                          Credit card number is required
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-3 mb-3">
-                        <label for="cc-expiration">Expiration</label>
-                        <input type="text" class="form-control" id="cardExpire" placeholder="" required />
-                        <div class="invalid-feedback">
-                          Expiration date required
-                        </div>
-                      </div>
-                      <div class="col-md-3 mb-3">
-                        <label for="cc-expiration">CVV</label>
-                        <input type="text" class="form-control" id="cardCvv" placeholder="" onChange={(e) => setCardCvv(e.target.value)} required />
-                        <div class="invalid-feedback">
-                          Security code required
-                        </div>
-                      </div>
-                    </div>
+                    <CardElement />
                   </div>
                   <hr class="my-4" />
                   <button class="w-100 btn btn-primary" type="submit">Place Order</button>
@@ -184,9 +175,7 @@ export default function Order() {
             </form>
           </main>
         </div>
-
       </checkout>
-
       <Footer />
     </ div>
   );
