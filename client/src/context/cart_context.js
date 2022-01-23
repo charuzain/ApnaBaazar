@@ -11,7 +11,7 @@ import {
 
 // check if an item by the name cart exist in local storage 
 const getLocalStorage = () => {
-  
+
   let cart = localStorage.getItem('cart');
   //console.log(cart);
   if (cart) {
@@ -45,15 +45,19 @@ export const CartProvider = ({ children }) => {
 
   }
 
+  // value : increase/decrease
   const toggleAmount = (id, value) => {
- 
-   }
+    // console.log(id,value)
+    dispatch({ type: TOGGLE_CART_ITEM_AMOUNT, payload: { id, value } })
+
+  }
+  // console.log(toggleAmount)
 
   //function to clear cart
   const clearCart = () => {
-    dispatch({ type: CLEAR_CART})
+    dispatch({ type: CLEAR_CART })
 
-   }
+  }
 
   // we are not persisiting the cart data
   //everytime there is change in cart 
