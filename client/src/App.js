@@ -7,8 +7,11 @@ import SingleProductPage from "./pages/SingleProductPage";
 import ProductsPage from "./pages/ProductsPage";
 import Home from "./components/Home";
 import Login from "./components/Login";
-import Signup from "./components/Signup";
+// import Signup from "./components/Signup";
+import Register from "./components/Register";
 import Checkout from "./components/Checkout";
+
+import Axios from "axios";
 const App = () => {
   return (
     <Routes>
@@ -20,7 +23,8 @@ const App = () => {
       <Route path="products/:id" element={<SingleProductPage />}></Route>
       <Route path="/checkout" element={<Checkout />}></Route>
       <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
+      {/* <Route path="/signup" element={<Signup />} /> */}
+      <Route path="/register" element={<Register />} />
     </Routes>
   );
 };
