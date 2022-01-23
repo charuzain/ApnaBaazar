@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
-
   const[email, setEmail] = useState("");
   const[password, setPassword] = useState("");
 
@@ -33,8 +32,9 @@ const Login = () => {
   return (
     <div>
       {/* <Header /> */}
+
       <div className='login-body'>
-      <form>
+        <form >
         <div class="row mb-3">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-10">
