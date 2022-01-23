@@ -59,9 +59,8 @@ export default function SingleProductPage() {
             {quantity > 0 && <AddToCart product={product}/>}
           </section>
         </div>
-      
+    
         </div> 
-
       </Wrapper>
     </div>
   )
