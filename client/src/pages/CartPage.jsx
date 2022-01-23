@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { useCartContext } from '../context/cart_context'
 import { Link } from 'react-router-dom'
-// import { CartContent, PageHero } from '../components'
 import PageHero from '../components/PageHero'
 import CartContent from '../components/Cart/CartContent'
 import Header from '../components/Header'
@@ -19,8 +18,6 @@ const CartPage = () => {
           Fill Your Cart !!!
           </Link>
           </div>
-        '
-      
     </Wrapper>
     )
   }
