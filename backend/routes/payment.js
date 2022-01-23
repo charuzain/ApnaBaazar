@@ -6,11 +6,11 @@ const stripe = require("stripe")(
 
 module.exports = () => {
   router.post("/", async (req, res) => {
-    const { items } = req.body;
+    const { amount } = req.body;
 
     // Create a PaymentIntent with the order amount and currency
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: 100 * 100,
+      amount: amount * 100,
       currency: "cad",
       automatic_payment_methods: {
         enabled: true,

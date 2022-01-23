@@ -34,7 +34,7 @@ export default function Order() {
     const {clientSecret} = await fetch("/create-payment-intent" , {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ paymentMethodType:'card', currency: 'cad' }),
+      body: JSON.stringify({ paymentMethodType:'card', currency: 'cad' , amount: total}),
     }).then( r => r.json());
 
     console.log("clientSecret" , clientSecret);
