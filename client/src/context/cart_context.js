@@ -33,7 +33,6 @@ const CartContext = React.createContext()
 export const CartProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(reducer, initialState)
-
   // Add item to cart , invoke it at singleProduct Page
   const addToCart = (id, amount, product) => {
     dispatch({ type: ADD_TO_CART, payload: { id, amount, product } })
@@ -42,27 +41,25 @@ export const CartProvider = ({ children }) => {
   // function to remove item from cart
   const removeItem = (id) => {
     dispatch({ type: REMOVE_CART_ITEM, payload: id })
-
   }
 
   // value : increase/decrease
   const toggleAmount = (id, value) => {
     // console.log(id,value)
     dispatch({ type: TOGGLE_CART_ITEM_AMOUNT, payload: { id, value } })
-
   }
   // console.log(toggleAmount)
-
   //function to clear cart
   const clearCart = () => {
     dispatch({ type: CLEAR_CART })
-
   }
+
 
   // we are not persisiting the cart data
   //everytime there is change in cart 
   //invoke useEffect and save current cart in local storage
   useEffect(() => {
+    dispatch({type:COUNT_CART_TOTALS})
     localStorage.setItem('cart', JSON.stringify(state.cart))
   }, [state.cart]) // invoke everytime there is a change in cart
 
