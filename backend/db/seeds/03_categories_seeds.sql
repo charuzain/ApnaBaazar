@@ -2,4 +2,7 @@ INSERT INTO
 categories(name)
 VALUES
     ('Fresh Produce'),
-    ('Pantry');
+    ('Pantry'),
+    ('Dairy & eggs'),
+    ('Snack & Sweets');
+    
