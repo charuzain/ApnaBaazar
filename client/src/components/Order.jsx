@@ -6,6 +6,7 @@ import { useCartContext } from '../context/cart_context'
 import {CardElement ,  useStripe } from '@stripe/react-stripe-js';
 import { Elements , useElements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import Header from './Header';
 
 const stripePromise = loadStripe("STRIPE_PUBLISHABLE_KEY");
 
@@ -67,7 +68,7 @@ export default function Order() {
       .then((response) => {
         console.log("response", response);
         if (response.status === 200) {
-          navigate('/orderComplete');
+          navigate(`/orderComplete/${response.data}`);
         }
       })
       .catch((err) => {
@@ -81,8 +82,8 @@ export default function Order() {
   }
 
   return (
-  
-<div>
+    <div>
+      {/* <Header /> */}
       <checkout>
         <div class="container">
           <main>
