@@ -2,8 +2,18 @@ import React, { useReducer, useState } from 'react';
 import Footer from './Footer';
 import Axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { useCartContext } from '../context/cart_context'
 
 export default function Order() {
+  
+  const {cart , total_amount } =useCartContext();
+
+  console.log(cart , total_amount);
+
+  const shipping_fee = 5.34;
+  const tax = Math.round((total_amount * 0.05)*100)/100
+  const order_total = total_amount + tax + shipping_fee
+  const total = order_total.toFixed(2);
 
   const navigate = useNavigate();
 
@@ -15,28 +25,22 @@ export default function Order() {
   const [cardNumber, setCardNumber] = useState('');
   const [cardCvv, setCardCvv] = useState('');
   const [cardExpire, setCardExpire] = useState('');
-  const [total, setTotal] = useState('');
-  const cartItems = [{ product_id: '4', name: 'Milk', quantity: 4, price: 15 },
-  { product_id: '1', name: 'Sushi', quantity: 1, price: 15 },
-  { product_id: '2', name: 'Chicken', quantity: 2, price: 20 },
-  { product_id: '3', name: 'Eggs', quantity: 3, price: 30 },
-  { product_id: '5', name: 'Atta', quantity: 3, price: 30 }];
-
+  
   const submitHandler = event => {
     event.preventDefault();
-    const cart = {
-      items: cartItems,
+    const postCart = {
+      items: cart,
       firstName: firstName,
       lastName: lastName,
       address: address,
       email: email,
       total: cartTotal(),
     }
-    console.log(cart);
+    console.log(postCart);
 
     Axios.post('http://localhost:3001/order',
       {
-        cart: cart,
+        cart: postCart,
         "user_id": "1",
       })
       .then((response) => {
@@ -51,7 +55,7 @@ export default function Order() {
   }
   const cartTotal = function () {
     let total = 0;
-    cartItems.forEach(item => total += item.price);
+    cart.forEach(item => total += item.price);
     return total;
   }
 
@@ -64,25 +68,42 @@ export default function Order() {
               <div class="row g-5">
                 <div class="col-md-5 col-lg-4 order-md-last">
                   <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-primary">Your cart</span>
-                    <span class="badge bg-primary rounded-pill">{cartItems.length}</span>
+                    <span class="text-primary">Order Summary</span>
+                    <span class="badge bg-primary rounded-pill">{cart.length}</span>
                   </h4>
                   <ul class="list-group mb-3">
-                    {cartItems.map((item) => (
+                    {cart.map((item) => (
                       <div>
                         <li class="list-group-item d-flex justify-content-between lh-sm">
                           <div>
                             <h5 class="my-0">{item.name}</h5>
-                            <small class="my-0">Qty:{item.quantity}</small>
                           </div>
-                          <span class="text-muted">${item.price}</span>
+                          <span class="text-muted">${item.price * item.amount}</span>
                         </li>
                       </div>
 
                     ))}
+                    <div>
+                    <li class="list-group-item d-flex justify-content-between">
+                      <strong>SubTotal (CAD)</strong>
+                      <strong>${total_amount}</strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                          <div>
+                            <h6 class="my-0">Shipping Fee</h6>
+                          </div>
+                          <span class="text-muted">${shipping_fee}</span>
+                     </li>
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                          <div>
+                            <h6 class="my-0">Tax</h6>
+                          </div>
+                          <span class="text-muted">${tax}</span>
+                     </li>
+                    </div>
                     <li class="list-group-item d-flex justify-content-between">
                       <strong>Total (CAD)</strong>
-                      <strong>Total Items ({cartItems.length}) : ${cartTotal()}</strong>
+                      <strong>${total}</strong>
                     </li>
                   </ul>
                 </div>
