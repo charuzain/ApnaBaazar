@@ -61,7 +61,7 @@ const Login = () => {
       </form>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
 
     
