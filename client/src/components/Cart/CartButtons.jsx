@@ -2,12 +2,22 @@ import React from 'react'
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { useProductsContext } from '../context/products_context'
-import { useCartContext } from '../context/cart_context'
-import { useUserContext } from '../context/user_context'
+import { useCartContext } from '../../context/cart_context'
 
 const CartButtons = () => {
-  return <h4>cart buttons </h4>
+  const {total_items}  = useCartContext()
+  return (
+    <Wrapper>
+    <Link to ='/cart' className='cart-btn'>
+    <span className="cart-container">
+      <span className="cart-value">
+        {total_items}
+      </span>
+    </span>
+    </Link>
+    </Wrapper>
+
+  )
 }
 
 const Wrapper = styled.div`
@@ -28,37 +38,24 @@ const Wrapper = styled.div`
     align-items: center;
     position: relative;
     svg {
-      height: 1.6rem;
+      height: 1.5rem;
       margin-left: 5px;
     }
   }
   .cart-value {
     position: absolute;
     top: -10px;
-    right: -16px;
-    background: var(--clr-primary-5);
-    width: 16px;
+    right: -11px;
+    background: green;
+    width: 10px;
     height: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    font-size: 0.75rem;
+    border-radius: 60%;
+    font-size: 0.65rem;
     color: var(--clr-white);
     padding: 12px;
-  }
-  .auth-btn {
-    display: flex;
-    align-items: center;
-    background: transparent;
-    border-color: transparent;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--clr-grey-1);
-    letter-spacing: var(--spacing);
-    svg {
-      margin-left: 5px;
-    }
   }
 `
 export default CartButtons
