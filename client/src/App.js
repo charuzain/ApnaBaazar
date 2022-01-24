@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
 import FeaturedProducts from "./components/FeaturedProducts";
 import "./index.css";
 import SingleProductPage from "./pages/SingleProductPage";
@@ -10,8 +10,9 @@ import Login from "./components/Login";
 // import Signup from "./components/Signup";
 import Register from "./components/Register";
 // import Checkout from "./components/Checkout";
+import AboutUs from "./components/AboutUs";
 
-import Axios from "axios";
+//import Axios from "axios";
 import Signup from "./components/Signup";
 import Order from "./components/Order";
 import OrderComplete from "./components/OrderComplete";
@@ -32,6 +33,7 @@ const App = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/signup" element={<Signup />} />
       {/* <Route path="/checkout" element={<Checkout />} /> */}
+      <Route path="/aboutus" element={<AboutUs />} />
     </Routes>
   );
 };
