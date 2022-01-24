@@ -12,7 +12,19 @@ const Footer = () => {
               <div class="col-md-4 mx-auto">
               {/* <!-- Content --> */}
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Apna Bazaar</h5>
-                <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p>Simply Desi Simply Apna Bazaar.</p>
+                <ul class="list-unstyled list-inline text-center">
+          <li class="list-inline-item">
+            <a class="btn-floating btn-fb mx-1">
+              <i class="fab fa-facebook-f" > </i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn-floating btn-tw mx-1">
+              <i class="fab fa-twitter"> </i>
+            </a>
+          </li>
+        </ul>
               </div>
 
               <hr class="clearfix w-100 d-md-none" />
@@ -51,11 +63,12 @@ const Footer = () => {
               {/* <!-- Grid column --> */}
               <div class="col-md-2 mx-auto">
               {/* <!-- Links --> */}
-              <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Contact us</h5>
-              <p><i class="fas fa-home mr-3"></i> 8905 Hwy 50 Unit 7, Vaughan, ON L4H 5A1</p>
+              {/* <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Contact us</h5>
+              <p><i class="fas fa-home mr-3"></i> 8905 Hwy 50 Unit 7, Vaughan, ON L4H 5A1</p> */}
               <p><i class="fas fa-envelope mr-3"></i> reach@apnabazaar.com</p>
-              <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-              <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+              <p> Response time is 24 - 48 hours.</p>
+              {/* <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+              <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p> */}
               </div>
 
             </div>
@@ -67,7 +80,7 @@ const Footer = () => {
         <hr />
 
         {/* <!-- Call to action --> */}
-        <ul class="list-unstyled list-inline text-center py-2">
+        <ul class="list-unstyled list-inline text-center py-1">
           <li class="list-inline-item">
             <h5 class="mb-1">Register for free</h5>
           </li>
@@ -78,22 +91,11 @@ const Footer = () => {
         {/* <!-- Call to action --> */}
 
         {/* <!-- Social buttons --> */}
-        <ul class="list-unstyled list-inline text-center">
-          <li class="list-inline-item">
-            <a class="btn-floating btn-fb mx-1">
-              <i class="fab fa-facebook-f"> </i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a class="btn-floating btn-tw mx-1">
-              <i class="fab fa-twitter"> </i>
-            </a>
-          </li>
-        </ul>
+       
         {/* <!-- Social buttons --> */}
 
         {/* <!-- Copyright --> */}
-        <div class="footer-copyright text-center py-3">© 2022 ApnaBazaar. All rights reserved.
+        <div class="footer-copyright text-center py-1">© 2022 ApnaBazaar. All rights reserved.
           {/* <a href="https://mdbootstrap.com/"> ApnaBazaar.ca</a> */}
         </div>
         {/* <!-- Copyright --> */}       
