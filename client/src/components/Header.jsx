@@ -1,7 +1,15 @@
-import React from 'react';
+import React , {useState} from 'react';
 import CartButtons from './Cart/CartButtons';
+import {useLocation} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; 
 
 const Header = () => {
+  const {state} = useLocation(); 
+  console.log(state);
+  const navigate = useNavigate();
+  const logout = () => {
+    navigate('/',{state:{name:"",email:""}});
+  }
   return (
     <div className="mynav">
       <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
@@ -40,19 +48,27 @@ const Header = () => {
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="/products">Products</a>
               </li>
-              <ul className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/checkout" >Checkout</a>
-              </ul>
-
+            </ul>
+          {(state !== null && state.name !== "") ? (<ul className="navbar-nav me-left mb-2 mb-lg-0">
+            <li className="nav-item">
+            <a className="nav-link active" aria-current="page">{state.name}</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link active" aria-current="page"  href="" onClick={logout}>SignOut</a>
+            </li>
+           </ul>) : (<ul className="navbar-nav me-left mb-2 mb-lg-0">
+            <li className="nav-item">
+            <a className="nav-link active" aria-current="page" href="/login">SignIn</a>
+            </li>
+           </ul>
+            )
+           }
+           <ul className="navbar-nav me-left mb-2 mb-lg-0">
+           <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="/register">Register</a>
+            </li>
             </ul>
             <ul className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/login">SignIn</a>
-            </ul>
-            <ul className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/Register" >SignUp</a>
-            </ul>
-            <ul className="nav-item">
-              
               {/* <!-- Icon --> */}
               <a className="text-reset me-3" href="/cart">
                 <CartButtons/>
