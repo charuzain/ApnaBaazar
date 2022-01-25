@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import "../styles/home.css"
-import FeaturedProducts from './FeaturedProducts';
 
 const Home = () => {
   return (
