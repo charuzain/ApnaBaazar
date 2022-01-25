@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CartButtons from './Cart/CartButtons';
 
 const Header = () => {
@@ -45,12 +46,13 @@ const Header = () => {
               </ul>
 
             </ul>
-            <ul className="nav-item">
+            <Link to ='/register' className='btn'>Login/register</Link>
+            {/* <ul className="nav-item">
               <a className="nav-link active" aria-current="page" href="/login">SignIn</a>
-            </ul>
-            <ul className="nav-item">
+            </ul> */}
+            {/* <ul className="nav-item">
               <a className="nav-link active" aria-current="page" href="/Register" >SignUp</a>
-            </ul>
+            </ul> */}
             <ul className="nav-item">
               
               {/* <!-- Icon --> */}

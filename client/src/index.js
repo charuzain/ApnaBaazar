@@ -8,6 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ProductsProvider } from "./context/products_context";
 import { FilterProvider } from "./context/filter_context";
 import { CartProvider } from "./context/cart_context";
+import { UsersProvider } from "./context/user_context";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
@@ -19,11 +20,13 @@ import { loadStripe } from "@stripe/stripe-js";
     <ProductsProvider>
       <FilterProvider>
         <CartProvider>
+          <UsersProvider>
           <BrowserRouter>
             <Elements stripe={stripePromise}>
               <App />
             </Elements>
           </BrowserRouter>
+          </UsersProvider>
         </CartProvider>
       </FilterProvider>
     </ProductsProvider>,
