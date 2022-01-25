@@ -2,14 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import payment_success from '../images/payment.jpeg';
 import { Link, useParams } from 'react-router-dom'
-import Header from './Header';
+import HeaderOrder from './HeaderOrder';
 import Footer from './Footer';
 
 export default function OrderComplete() {
   let { orderId } = useParams();
   return (
     <Wrapper>
-      <Header/>
+       <HeaderOrder/>
       <div className="card">
         <img class="card-img-top" src={payment_success} alt="Card image cap" />
         <div class="card-body">
