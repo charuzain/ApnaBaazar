@@ -9,6 +9,7 @@ export default function OrderComplete() {
   let { orderId } = useParams();
   return (
     <Wrapper>
+      
        <HeaderOrder/>
       <div className="card">
         <img class="card-img-top" src={payment_success} alt="Card image cap" />

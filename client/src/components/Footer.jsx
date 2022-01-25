@@ -80,14 +80,14 @@ const Footer = () => {
         <hr />
 
         {/* <!-- Call to action --> */}
-        <ul class="list-unstyled list-inline text-center py-1">
+        {/* <ul class="list-unstyled list-inline text-center py-1">
           <li class="list-inline-item">
             <h5 class="mb-1">Register for free</h5>
           </li>
           <li class="list-inline-item">
             <a href="#!" class="btn btn-danger btn-rounded">Sign up!</a>
           </li>
-        </ul>
+        </ul> */}
         {/* <!-- Call to action --> */}
 
         {/* <!-- Social buttons --> */}

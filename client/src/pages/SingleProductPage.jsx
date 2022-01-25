@@ -6,6 +6,8 @@ import Error from '../components/Error';
 import styled from 'styled-components'
 import PageHero from '../components/PageHero';
 import AddToCart from '../components/AddToCart';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 export default function SingleProductPage() {
   const params = useParams()
@@ -35,14 +37,16 @@ export default function SingleProductPage() {
     <div>
       {single_product_loading && <Loading/>}
       {single_product_error && <Error/>}
+      <Header />
+
       <Wrapper>
       <PageHero title ={name} product/>
       <div className="section section-center page">
         <Link to = "/products" className='btn'>
           Back
         </Link>
-        <div className="products-center">
-          <img src={image}/>
+        <div className="product-center">
+          <img src={image} alt={name}/>
           <section className="content">
             <h2>{name}</h2>
             <h5 className="price">${price}.00</h5>
@@ -61,7 +65,9 @@ export default function SingleProductPage() {
         </div>
     
         </div> 
+        <Footer/>
       </Wrapper>
+     
     </div>
   )
 }
@@ -69,8 +75,8 @@ export default function SingleProductPage() {
 const Wrapper = styled.main`
 img{
    
-    width:75%;
-    height: 400 px
+    width:auto;
+    height: 400px;
     display: block;
     object-fit: cover;
     border-radius: var(--radius);
@@ -78,7 +84,7 @@ img{
   .product-center {
     display: grid;
     gap: 4rem;
-    margin-top: 2rem;
+    margin-top: 20px;
   }
   .price {
     color: green;

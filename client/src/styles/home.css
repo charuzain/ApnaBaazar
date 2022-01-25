@@ -17,16 +17,16 @@
   font-size: 1.5em;
 }
 .carousel{
-  margin-top: 5em;
-  margin-bottom: 2em;
+  margin-top: 50px;
 }
 .carousel-item{
   background-color: gray;  
-  height: 50rem;
+  height: 50vh;
   color: white;
   position: relative;
   
 }
+
 
 .carousel-item .container{
   position: absolute;
@@ -77,11 +77,29 @@
 }
 
 .footer {
-  background-color: greenyellow;
+  background-color: #f7eee1;
   height: 1.5 em;
-  margin-top: 2em ;
+  /* margin-top: 2em ; */
 }
 .body-message{
   background-color: orange;
 }
 
+.filler{
+  height:300px;
+  background-image: url("https://cdn.shopify.com/s/files/1/0524/1874/0389/files/GenericBanner-SimplyDesi_06084597-bedc-497c-908e-75b195b04075_3000x.jpg?v=1636502036");
+}
+
+.filler1{
+    height:500px;
+  background-image: url("https://cdn.shopify.com/s/files/1/0524/1874/0389/files/Lohri_Baskets-WB_1600x.jpg?v=1641751745");
+
+
+}
+
+.register-form{
+  padding-top: 150px;
+  min-height: 70vh;
+
+
+}

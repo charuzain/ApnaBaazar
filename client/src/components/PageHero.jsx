@@ -6,17 +6,17 @@ export default function PageHero({ title, product}) {
   return (
     <Wrapper>
     <div className="section-center">
-    <Link to = '/'>Home</Link>{product && <Link to ="/products">/
-    Products</Link>}/{title}
+    <Link to = '/'>Home</Link>{product && <Link to ="/products">/Products</Link>}/{title}
       </div >
     </Wrapper>
   )
 }
 
 const Wrapper = styled.section`
-  background: #10b04a;
+  background: #f7eee1;
   width: 100%;
-  min-height: 20vh;
+  padding-top:50px;
+  min-height: 130px;
   display: flex;
   align-items: center;
   color: var(--clr-primary-1);
