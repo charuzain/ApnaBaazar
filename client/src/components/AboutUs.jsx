@@ -5,6 +5,14 @@ import Footer from './Footer';
 
 export default function AboutUs() {
   return (
+    <>
+    <Header/>
+      <br />
+
+      <br />
+
+      <br />
+
     <Wrapper>
       <div className='body-container'>
       <Header /> 
@@ -19,7 +27,10 @@ We also started serving the rest of the locations with Canadapost currently.</p>
     <p>ApnaBazaar delivers desi goodness across Canada, where over 5000+Asian Groceries and staples are delivered right to your homes, at your doorstep. Our expert grocery pickers, ensure to select the groceries as per your needs and instructions. Our onlinegrocery delivery is the first service that lets you shop your favorite Groceries from the comfort of your home and with ease. </p>
   </div>
   </div>
-  
+        <br />
+        <br />
+        <br />
+
   <div class ="about_team">
    <h2 >Our Team</h2>
   <div class="row">
@@ -54,11 +65,17 @@ We also started serving the rest of the locations with Canadapost currently.</p>
     </div>
   </div> 
       </div>
-     
+        <br />
+        <br />
+        <br />
+
   <Footer />
   </Wrapper>
+    </>
   );
-}const Wrapper = styled.section`
+}
+
+const Wrapper = styled.section`
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
@@ -88,7 +105,7 @@ html {
   margin-top: 20px;
   padding: 50px;
   text-align: left;
-  background-color: orange;
+background-color: orange;
   color: white;
 }
 

@@ -84,6 +84,16 @@ export default function Order() {
 
   return (
     <div>
+      <Header/>
+      <br/>
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <br />
+
+
       <checkout>
         <div class="container">
           <main>
@@ -177,6 +187,13 @@ export default function Order() {
           </main>
         </div>
       </checkout>
+      <br />
+
+      <br />
+      <br />
+      <br />
+      <br />
+
       <Footer />
     </ div>
   );

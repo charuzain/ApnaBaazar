@@ -20,11 +20,11 @@ const Header = () => {
             href="/" >
             <img className="d-inline-block align-top"
               src="https://thumbs.dreamstime.com/b/vegetables-shopping-cart-trolley-grocery-logo-icon-design-vector-171090350.jpg"
-              width="30" height="30" />
+              width="30" height="30" alt="logo" />
             ApnaBazar
           </a>
 
-          <button
+          {/* <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -34,15 +34,12 @@ const Header = () => {
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
-          </button>
+          </button> */}
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="/aboutus">AboutUs</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/featured">Featured Products</a>
               </li>
 
               <li className="nav-item">
@@ -68,7 +65,7 @@ const Header = () => {
               <a className="nav-link active" aria-current="page" href="/register">Register</a>
             </li>
             </ul>
-            <ul className="nav-item">
+            <ul className="nav-item" style={{"margin-top":"15px"}}>
               {/* <!-- Icon --> */}
               <a className="text-reset me-3" href="/cart">
                 <CartButtons/>

@@ -36,7 +36,9 @@ const LoginForm = () => {
     <form class="form-signin" onSubmit={submitLogin}>       
       <h2 class="form-signin-heading">Please login</h2>
       <input type="text" class="form-control" id="name" placeholder="Full Name" required="" autofocus="" onChange={e => setDetails({...details, name: e.target.value})} value={details.name}/>
+      <br/>
       <input type="text" class="form-control" id="email" placeholder="Email Address" required="" autofocus="" onChange={e => setDetails({...details, email: e.target.value})} value={details.email}/>
+      <br/>
       <input type="password" class="form-control" id="password" placeholder="Password" required="" onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>      
       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
     </form>
@@ -57,6 +59,8 @@ body {
 .wrapper {	
 	margin-top: 80px;
   margin-bottom: 80px;
+  min-height: 60vh;
+  padding-top: 120px;
 }
 
 .form-signin {

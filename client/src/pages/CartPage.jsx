@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero'
 import CartContent from '../components/Cart/CartContent'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 const CartPage = () => {
 
   const {cart} =useCartContext();
@@ -24,12 +25,11 @@ const CartPage = () => {
   }
   return <main>
     <Header/>
-    {/* <PageHero title ='cart'> */}
+    <PageHero title ='cart'/>
       <Wrapper className='page'>
         <CartContent/>
       </Wrapper>
-
-    {/* </PageHero> */}
+<Footer/>
   </main>
 }
 
