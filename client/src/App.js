@@ -9,7 +9,12 @@ import Home from "./components/Home";
 import LoginForm from "./components/LoginForm";
 import Register from "./components/Register";
 import AboutUs from "./components/AboutUs";
+<<<<<<< HEAD
 import Error from "./components/Error";
+=======
+import Terms from "./components/Terms";
+import Privacy from "./components/Privacy";
+>>>>>>> feature/footerUpdate
 
 //import Axios from "axios";
 import Order from "./components/Order";
@@ -28,7 +33,12 @@ const App = () => {
       <Route path="/login" element={<LoginForm />} />
       <Route path="/register" element={<Register />} />
       <Route path="/aboutus" element={<AboutUs />} />
+<<<<<<< HEAD
       <Route path="/*" element={<Error />} />
+=======
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/privacy" element={<Privacy />} />
+>>>>>>> feature/footerUpdate
 
     </Routes>
   );
