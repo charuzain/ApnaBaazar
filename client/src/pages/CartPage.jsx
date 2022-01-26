@@ -12,15 +12,35 @@ const CartPage = () => {
   console.log(cart)
   if(cart.length < 1){
     return (
+      <>
+       <Header/>
     <Wrapper className='page-100'>
 
       <div className="empty">
-        <h2>Cart is Empty</h2>
+       
+        <br/>
+          <br />
+
+          <br />
+          <br />
+
+          <br />
+
+
+
+        <h2>Your Cart !!</h2>
+        <div>
+
+        
+          <img src="https://adasglobal.com/img/empty-cart.png"></img>
+            </div>
         <Link to ='/products' className ='btn'>
           Fill Your Cart !!!
           </Link>
           </div>
     </Wrapper>
+      <Footer/>
+      </>
     )
   }
   return <main>
@@ -31,6 +51,8 @@ const CartPage = () => {
       </Wrapper>
 <Footer/>
   </main>
+      
+
 }
 
 const Wrapper = styled.main`
