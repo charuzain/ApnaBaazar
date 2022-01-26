@@ -38,7 +38,7 @@ const Footer = () => {
                   <a href="#!">My Profile</a>
                 </li>
                 <li>
-                  <a href="#!">My Orders</a>
+                  <a href="/cart">My Orders</a>
                 </li>
               </ul>
               </div>
@@ -51,10 +51,10 @@ const Footer = () => {
 
               <ul class="list-unstyled">
                 <li>
-                  <a href="#!">Terms & Conditions</a>
+                  <a href="/terms">Terms & Conditions</a>
                 </li>
                 <li>
-                  <a href="#!">Privacy Policy</a>
+                  <a href="/privacy">Privacy Policy</a>
                 </li>
               </ul>
               </div>

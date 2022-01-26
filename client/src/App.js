@@ -11,6 +11,8 @@ import LoginForm from "./components/LoginForm";
 import Register from "./components/Register";
 // import Checkout from "./components/Checkout";
 import AboutUs from "./components/AboutUs";
+import Terms from "./components/Terms";
+import Privacy from "./components/Privacy";
 
 //import Axios from "axios";
 import Signup from "./components/Signup";
@@ -34,6 +36,9 @@ const App = () => {
       <Route path="/signup" element={<Signup />} />
       {/* <Route path="/checkout" element={<Checkout />} /> */}
       <Route path="/aboutus" element={<AboutUs />} />
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/privacy" element={<Privacy />} />
+
     </Routes>
   );
 };
